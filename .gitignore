@@ -1,0 +1,7 @@
+﻿# .gitignore
+
+*.retry
+*.log
+.vault_pass
+.ansible/
+__pycache__/

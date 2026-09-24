@@ -1,0 +1,25 @@
+---
+- name: Test Client Applications
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: Test connectivity
+      ansible.builtin.ping:
+
+    - name: Check current user
+      ansible.builtin.command: whoami
+      register: user_result
+
+    - name: Display current user
+      ansible.builtin.debug:
+        var: user_result.stdout
+
+    - name: Check hostname
+      ansible.builtin.command: hostname
+      register: hostname_result
+
+    - name: Display hostname
+      ansible.builtin.debug:
+        var: hostname_result.stdout
