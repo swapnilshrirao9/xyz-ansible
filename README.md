@@ -30,10 +30,9 @@ ABC-OPERATIONS
 ABC-READONLY
 
 ## Create Users and Add to teams
-abc-admin - abc-admin (password)
-abc-developers abc-developers 
-abc-operations abc-operations
-
+xyz-admin  (password)
+abc-developers 
+abc-operations 
  ## we can used user.cvs using python script or LDAP
 
  # # Create Credentials
