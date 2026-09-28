@@ -13,7 +13,7 @@ This repository contains a basic Ansible project scaffold for environment-specif
 2. Install dependencies with `ansible-galaxy install -r requirements.yml`.
 3. Run a playbook such as `ansible-playbook playbooks/site.yml`.
 
-Password sks@12345
+
 
 ## Creating Project on Ansible AWX for the 
 
