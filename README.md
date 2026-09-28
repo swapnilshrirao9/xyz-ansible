@@ -13,7 +13,7 @@ This repository contains a basic Ansible project scaffold for environment-specif
 2. Install dependencies with `ansible-galaxy install -r requirements.yml`.
 3. Run a playbook such as `ansible-playbook playbooks/site.yml`.
 
-Password sks@12345
+
 
 ## Creating Project on Ansible AWX for the 
 
@@ -30,10 +30,9 @@ ABC-OPERATIONS
 ABC-READONLY
 
 ## Create Users and Add to teams
-abc-admin - abc-admin (password)
-abc-developers abc-developers 
-abc-operations abc-operations
-
+xyz-admin  (password)
+abc-developers 
+abc-operations 
  ## we can used user.cvs using python script or LDAP
 
  # # Create Credentials
