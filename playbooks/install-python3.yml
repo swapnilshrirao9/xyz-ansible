@@ -1,24 +1,28 @@
 ---
-- name: Install Python 3 on application servers
-  hosts: client_apps
+- name: Install Python 3 on Alpine Linux
+  hosts: all
   become: true
   gather_facts: false
 
   tasks:
-    - name: Install Python 3 if missing
-      ansible.builtin.raw: |
-        if command -v python3 >/dev/null 2>&1; then
-          echo "python3 already installed"
-        elif command -v apt-get >/dev/null 2>&1; then
-          apt-get update && apt-get install -y python3
-        elif command -v dnf >/dev/null 2>&1; then
-          dnf install -y python3
-        elif command -v yum >/dev/null 2>&1; then
-          yum install -y python3
-        else
-          echo "Unsupported package manager" >&2
-          exit 1
-        fi
-      register: python_install
-      changed_when: "'already installed' not in python_install.stdout"
-      failed_when: python_install.rc != 0
+
+    - name: Update Alpine package index
+      ansible.builtin.command:
+        cmd: apk update
+
+    - name: Install Python 3
+      ansible.builtin.apk:
+        name:
+          - python3
+        state: present
+        update_cache: false
+
+    - name: Verify Python 3 installation
+      ansible.builtin.command:
+        cmd: python3 --version
+      register: python_version
+      changed_when: false
+
+    - name: Display Python version
+      ansible.builtin.debug:
+        msg: "{{ python_version.stdout }}"
