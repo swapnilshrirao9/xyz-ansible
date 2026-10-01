@@ -17,3 +17,7 @@
       community.general.apk:
         update_cache: true
         become: true
+    - name: Check Python 3 version
+      ansible.builtin.command: python3 --version
+      register: python_version
+      become: true
