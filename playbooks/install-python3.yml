@@ -1,5 +1,5 @@
 - name: Install Python 3 on Alpine Linux
-  hosts: alpha
+  hosts: all
   gather_facts: false  # Prevents Ansible from needing Python before it's installed
 
   tasks:
