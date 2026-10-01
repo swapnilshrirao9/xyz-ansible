@@ -1,28 +1,16 @@
----
 - name: Install Python 3 on Alpine Linux
-  hosts: all
-  become: true
-  gather_facts: false
+  hosts: alpha
+  gather_facts: false  # Prevents Ansible from needing Python before it's installed
 
   tasks:
-
-    - name: Update Alpine package index
-      ansible.builtin.command:
-        cmd: apk update
-
-    - name: Install Python 3
-      ansible.builtin.apk:
-        name:
-          - python3
-        state: present
-        update_cache: false
-
-    - name: Verify Python 3 installation
-      ansible.builtin.command:
-        cmd: python3 --version
-      register: python_version
+    - name: Bootstrap Python 3 on Alpine using raw command
+      ansible.builtin.raw: apk add --no-cache python3
       changed_when: false
 
-    - name: Display Python version
-      ansible.builtin.debug:
-        msg: "{{ python_version.stdout }}"
+    - name: Gather facts after Python installation
+      ansible.builtin.setup:
+
+    # Now you can run standard Ansible modules safely
+    - name: Update Alpine package index and install packages
+      community.general.apk:
+        update_cache: true
