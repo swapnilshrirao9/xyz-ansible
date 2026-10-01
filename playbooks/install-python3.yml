@@ -14,9 +14,13 @@
 
     # Now you can run standard Ansible modules safely
     - name: Update Alpine package index and install packages
+      become: true
       community.general.apk:
+        name:
+          - python3
+        state: present
         update_cache: true
-        become: true
+
     - name: Check Python 3 version
       ansible.builtin.command: python3 --version
       register: python_version
