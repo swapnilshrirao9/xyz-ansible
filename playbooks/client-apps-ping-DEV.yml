@@ -1,0 +1,27 @@
+---
+- name: Test client application hosts in DEV
+  hosts: ssh-service-gamma.client-apps1.svc.cluster.local
+  gather_facts: false
+
+  tasks:
+
+    - name: Test connectivity
+      ansible.builtin.ping:
+
+    - name: Check current user
+      ansible.builtin.command: whoami
+      register: user_result
+      changed_when: false
+
+    - name: Display current user
+      ansible.builtin.debug:
+        var: user_result.stdout
+
+    - name: Check hostname
+      ansible.builtin.command: hostname
+      register: hostname_result
+      changed_when: false
+
+    - name: Display hostname
+      ansible.builtin.debug:
+        var: hostname_result.stdout

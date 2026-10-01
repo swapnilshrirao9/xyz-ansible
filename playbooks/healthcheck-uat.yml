@@ -1,0 +1,8 @@
+﻿---
+- name: Placeholder playbook
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Example task
+      ansible.builtin.debug:
+        msg: "This is a placeholder for the healthcheck playbook."

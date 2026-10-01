@@ -1,6 +1,6 @@
 ---
-- name: Test Client Applications
-  hosts: all
+- name: Test client application hosts in PROD
+  hosts: ssh-service-alpha.client-apps1.svc.cluster.local
   gather_facts: false
 
   tasks:
@@ -11,6 +11,7 @@
     - name: Check current user
       ansible.builtin.command: whoami
       register: user_result
+      changed_when: false
 
     - name: Display current user
       ansible.builtin.debug:
@@ -19,6 +20,7 @@
     - name: Check hostname
       ansible.builtin.command: hostname
       register: hostname_result
+      changed_when: false
 
     - name: Display hostname
       ansible.builtin.debug:
