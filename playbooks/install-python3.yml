@@ -1,3 +1,4 @@
+---
 - name: Install Python 3 on Alpine Linux
   hosts: all
   gather_facts: false  # Prevents Ansible from needing Python before it's installed
@@ -15,3 +16,4 @@
     - name: Update Alpine package index and install packages
       community.general.apk:
         update_cache: true
+        become: true
