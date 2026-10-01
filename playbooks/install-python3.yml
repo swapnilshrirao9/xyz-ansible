@@ -9,10 +9,6 @@
       become: true
       changed_when: false
 
-    - name: Gather facts after Python installation
-      ansible.builtin.setup:
-
-    # Now you can run standard Ansible modules safely
     - name: Update Alpine package index and install packages
       become: true
       community.general.apk:
