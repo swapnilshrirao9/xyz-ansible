@@ -5,6 +5,7 @@
   tasks:
     - name: Bootstrap Python 3 on Alpine using raw command
       ansible.builtin.raw: apk add --no-cache python3
+      become: true
       changed_when: false
 
     - name: Gather facts after Python installation
