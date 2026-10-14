@@ -1,6 +1,6 @@
 ﻿---
 - name: Install Java on application servers
-  hosts: client_apps
+  hosts: all
   become: true
   roles:
-    - java
+    - ../roles/java
