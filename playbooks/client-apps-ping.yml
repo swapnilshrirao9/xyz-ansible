@@ -26,3 +26,19 @@
     - name: Display hostname
       ansible.builtin.debug:
         var: hostname_result.stdout
+
+    - name: Check Java version
+      ansible.builtin.command: java -version
+      register: java_result
+
+    - name: Display Java version
+      ansible.builtin.debug:
+        var: java_result.stdout
+   
+    - name: Check Python version
+      ansible.builtin.command: python3 --version
+      register: python_result
+
+    - name: Display Python version
+      ansible.builtin.debug:
+        var: python_result.stdout
