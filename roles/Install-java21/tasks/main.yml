@@ -1,10 +1,10 @@
 ---
- - name: Installing Java 21
-   ansible.builtin.package:
-   name: "{{ java_package }}"
-   state: present
-    
- - name : Check Java version
-   ansible.builtin.command: java -version
-   register: java_version
-   ignore_errors: true
+- name: Install OpenJDK 21
+  apk:
+    name: openjdk-21-jdk
+    state: present
+    update_cache: yes
+  notify: Check Java Version
+
+- name: Flush handlers to check version immediately
+  meta: flush_handlers
