@@ -1,0 +1,9 @@
+---
+- name: Check Java Version
+  command: java -version
+  register: java_version_output
+  changed_when: false
+
+- name: Display Java Version
+  debug:
+    msg: "{{ java_version_output.stderr_lines }}"

@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - role: ../roles/Install-java21
+  tasks:
+    - name: Run the application
+      command: echo "Starting your java application here..."
