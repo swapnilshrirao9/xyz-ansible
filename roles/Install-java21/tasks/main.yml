@@ -1,18 +1,10 @@
 ---
-- name: Installing Java 21
-  hosts: all
-  gather_facts: false
-  vars:
-    ansible_user: linuxserver
-    ansible_port: 22
-    java_package: openjdk-21-jdk
-  tasks:
-    - name: Installing Java 21
-      ansible.builtin.package:
-        name: "{{ java_package }}"
-        state: present
+ - name: Installing Java 21
+   ansible.builtin.package:
+   name: "{{ java_package }}"
+   state: present
     
-    - name : Check Java version
-      ansible.builtin.command: java -version
-      register: java_version
-      ignore_errors: true
+ - name : Check Java version
+   ansible.builtin.command: java -version
+   register: java_version
+   ignore_errors: true
